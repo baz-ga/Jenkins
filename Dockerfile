@@ -15,4 +15,4 @@ RUN apt-get update && \
     apt-get install -y subversion python3 && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 2
 
-USER ${user}
+USER jenkins
