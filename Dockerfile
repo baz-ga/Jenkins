@@ -24,7 +24,10 @@ RUN apt-get update && \
     apt-get install -y nodejs && \
     ln -s /usr/bin/nodejs /usr/local/bin/node && \
     npm install -g yarn && \
-    unzip /tmp/xmlcalabash.zip -d /opt && \
-    rm /tmp/nodejs_setup /tmp/xmlcalabash.zip
+    rm /tmp/nodejs_setup
+
+# xmlcalabash setup
+RUN unzip /tmp/xmlcalabash.zip -d /opt && \
+    rm /tmp/xmlcalabash.zip && \
 
 USER jenkins
