@@ -13,6 +13,7 @@ USER root
 
 ADD https://deb.nodesource.com/setup_12.x /tmp/nodejs_setup 
 ADD https://github.com/ndw/xmlcalabash1/releases/download/1.2.5-100/xmlcalabash-1.2.5-100.zip /tmp/xmlcalabash.zip
+ADD https://www.apache.org/dyn/closer.cgi?filename=/xmlgraphics/fop/binaries/fop-2.6-bin.zip&action=download /tmp/fop.zip
 
 # installing Subversion, Python3, Ant, Saxon, Node and Git
 RUN apt-get update && \
@@ -26,5 +27,8 @@ RUN apt-get update && \
     npm install -g yarn && \
     unzip /tmp/xmlcalabash.zip -d /opt && \
     rm /tmp/nodejs_setup /tmp/xmlcalabash.zip
+# Apache FOP setup
+RUN unzip /tmp/fop.zip -d /opt && \
+    chmod 755 /opt/fop-2.6/fop/fop
 
 USER jenkins
