@@ -27,4 +27,7 @@ RUN apt-get update && \
     unzip /tmp/xmlcalabash.zip -d /opt && \
     rm /tmp/nodejs_setup /tmp/xmlcalabash.zip
 
+# graphviz setup
+RUN apt-get install -y graphviz
+
 USER jenkins
