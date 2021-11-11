@@ -7,7 +7,7 @@ name: Docker
 
 on:
   schedule:
-    # run every Wednesday
+    # run every Thursday at 22:31
     - cron: '31 22 * * 4'
   # run on every push to any branch
   push:
