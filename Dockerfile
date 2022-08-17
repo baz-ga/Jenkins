@@ -16,9 +16,13 @@ ARG XMLCalabash=https://github.com/ndw/xmlcalabash1/releases/download/1.2.5-100/
 # installing Subversion, Python3, Ant, Saxon, Node, NPM, and Git
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends subversion python3 apt-transport-https ant git libsaxonhe-java npm && \
+    apt-get install -y --no-install-recommends subversion python3 apt-transport-https ant git libsaxonhe-java npm make libwww-perl libcss-dom-perl libterm-readkey-perl && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 2 && \
     rm -rf /var/lib/apt/lists/*
+
+# Install W3C linkchecker skript "checklink"
+# https://dev.w3.org/perl/modules/W3C/LinkChecker/docs/checklink
+RUN PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'install W3C::LinkChecker'
 
 # install Yarn package manager for WeGA builds
 RUN npm install -g yarn
