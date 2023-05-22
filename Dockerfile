@@ -13,10 +13,11 @@ USER root
 
 ARG XMLCalabash=https://github.com/ndw/xmlcalabash1/releases/download/1.2.5-100/xmlcalabash-1.2.5-100.zip
 
-# installing Subversion, Python3, Ant, Saxon, Node, NPM, and Git
-RUN apt-get update && \
+# installing Subversion, Python3, Ant, Saxon, Node, nodejs (lts version), and Git
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends subversion python3 apt-transport-https ant git libsaxonhe-java npm make libwww-perl libcss-dom-perl libterm-readkey-perl && \
+    apt-get install -y --no-install-recommends subversion python3 apt-transport-https ant git libsaxonhe-java nodejs make libwww-perl libcss-dom-perl libterm-readkey-perl && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 2 && \
     rm -rf /var/lib/apt/lists/*
 
